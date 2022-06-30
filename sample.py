@@ -14,7 +14,8 @@ def multipleCompression():
         else:
             pass
 
-    loc = "D:\\"
+    loc = input("Choose Drive: ".center(padding))
+    loc = loc + ":\\"
 
     os.chdir(loc)
     cwd = os.getcwd()
@@ -43,10 +44,13 @@ def multipleCompression():
 
 
 def make_zipfile(_path):
+
+    # path = input("Enter the zip path: ") 
+
     if os.path.isdir(_path):
         inName = os.path.join(
-            'D:\experiments', os.path.basename(_path) + '.zip')
-        #head, tail = os.path.split(os.path.split(_path)[0])
+            'D:\experiments', os.path.basename(_path) + '.zip') # 'D:\experiments' instead of path
+            
         print("saving: " + inName)
 
         def zipdir(_path, zip_handle):
@@ -56,9 +60,12 @@ def make_zipfile(_path):
                     zip_handle.write(os.path.join(root, file), file)
         with zipfile.ZipFile(inName, 'w', compression=zipfile.ZIP_DEFLATED, allowZip64=True) as z:
             zipdir(_path, z)
-    print("zip file created")
+    # print("zip file created")
     return inName
 
+path = input("enter directory path: ")
 
-make_zipfile("D:\experiments")
+make_zipfile('D:\experiments') # 'D:\experiments' instead of path
+
+
 # multipleCompression()
