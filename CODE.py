@@ -42,7 +42,7 @@ def compression():
     print("                     \_____\____/|_|  |_|_|    |_|  \_\______|_____/_____/                      ")
     print("\n------------------------------------------------------------------------------------------------")
     print("================================================================================================\n")
-    
+    # asdf
      # show the available drives in computer
     for drive_letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
         if os.path.exists(f'{drive_letter}:'):
