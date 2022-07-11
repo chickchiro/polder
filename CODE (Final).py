@@ -1,6 +1,6 @@
 from msilib import _directories
 import zipfile
-import time
+import time #sdfasdf
 import sys
 import os
 def cls(): return os.system('cls')
