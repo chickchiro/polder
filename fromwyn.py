@@ -284,8 +284,7 @@ def decompression():
         cwd = os.getcwd()
 
         # output desination
-        zip_dir_path = input(
-            "                               Enter archive directory: ")
+        zip_dir_path = input("                               Enter archive directory: ")
         zip_dir_path_dir_list = os.listdir(zip_dir_path)
         # --------------------------------- PRINT DIR LIST -------
         print("Files and directories in '", zip_dir_path, "' :")
