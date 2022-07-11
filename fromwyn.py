@@ -283,18 +283,43 @@ def decompression():
         os.chdir(loc)
         cwd = os.getcwd()
 
+        # output desination
+        zip_dir_path = input(
+            "                               Enter archive directory: ")
+        zip_dir_path_dir_list = os.listdir(zip_dir_path)
+        # --------------------------------- PRINT DIR LIST -------
+        print("Files and directories in '", zip_dir_path, "' :")
+        # ['docus.docx', 'powerpoint.pptx', 'script.py', 'test.zip']
+        print(zip_dir_path_dir_list)
+        # --------------------------------- PRINT DIR LIST -------
+
+
         # Print the current working directory
-        print("Current working directory: {0}".format(cwd).center(98))
+        print("Current working directory: {0}".format(zip_dir_path).center(98))
 
         # Ask user for file to be compressed
-        name = (input(
-            "\n            Enter the file name you want to decompress(name.zip,test.zip, etc) : "))
+        # name = (input(
+        #     "\n            Enter the file name you want to decompress(name.zip,test.zip, etc) : "))
+
+        file_name = []
+
+        isDone = False
+        while not isDone:
+            name = (input(
+                "\n            Enter the file name you want to decompress(name.zip,test.zip, etc) : "))
+            # fls = input(
+            #     "                               Enter the file to be compressed: ")
+            if(name in zip_dir_path_dir_list):
+                isDone = True
+            else:
+                print("The filename you entered doesn't exist!")
+
         print("")
         print("Unzipping the files...".center(98))
         loading()
 
         # search the drive
-        for root, dirs, files in os.walk(loc):
+        for root, dirs, files in os.walk(zip_dir_path):
             if name in files:
                 fileLoc = (os.path.join(root, name))
                 print("\n" + fileLoc.center(98))
