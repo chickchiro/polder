@@ -67,7 +67,7 @@ def SingleCompresionPage():
     print("\n------------------------------------------------------------------------------------------------")
     print("================================================================================================\n")
     try:  # exception handling
-        path_input = input("                               Enter drive letter (i.e. C:): ")
+        path_input = input("                               Enter drive letter (C:, D:, etc...): ")
 
         if os.path.isdir(path_input):  # to check if the drive exists
             # name of the zip file to be created
@@ -137,7 +137,7 @@ def MultipleCopressionPage():
 
     try:  # exception handling
         # drive letter kung saan manggagaling yung mga icocompress
-        path_input = input("                               Enter drive letter (i.e. C:): ")
+        path_input = input("                               Enter drive letter (C:, D:, etc...): ")
 
         if os.path.isdir(path_input): # check if the directory exists
             basename = input("                               Enter name for the archive: ") # name of the zip file to be created
@@ -207,11 +207,6 @@ def decompression():
     print("================================================================================================\n")
 
     try:  # exception handling
-        for drive_letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
-            if os.path.exists(f'{drive_letter}:'):
-                print(f'{drive_letter}:'.center(90))
-            else:
-                pass
 
         # output path
         zip_dir_path = input("                               Enter archive path: ")
