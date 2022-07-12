@@ -41,12 +41,12 @@ def loading():
 
 
 def zipdir(_path, zip_handle, zipname, filenames):
-    for root, dirs, files in os.walk(_path):
-        for file in files:
-            if(file != zipname and file in filenames):
-                print(" ")
-                print(os.path.join(root, file).center(98))
-                zip_handle.write(os.path.join(root, file), file)
+    # for root, dirs, files in os.walk(_path):
+    for file in filenames:
+        # if(file != zipname and file in filenames):
+        print(" ")
+        print(os.path.join(_path, file).center(98))
+        zip_handle.write(os.path.join(_path, file), file)
 
 # compression process
 
@@ -126,7 +126,7 @@ def SingleCompresionPage():
                     print("The filename you entered doesn't exist!")
 
             loading()  # loading animation
-            compressFiles(path_input, zipfile_name, file_name,
+            compressFiles(destination_dir, zipfile_name, file_name,
                           destinationFile)  # file compression function
 
             more()  # prompt
@@ -220,7 +220,7 @@ def MultipleCopressionPage():
                             print("The filename you entered doesn't exist!")
 
                 loading()  # loading animation
-                compressFiles(path_input, zipfile_name, file_name,
+                compressFiles(destination_dir, zipfile_name, file_name,
                               destinationFile)  # compressing files
                 more()  # prompt
             else:  # if hindi nageexist yung drive
@@ -270,18 +270,18 @@ def decompression():
 
     try:  # exception handling
         # show the available drives in computer
-        for drive_letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
-            if os.path.exists(f'{drive_letter}:'):
-                print(f'{drive_letter}:'.center(90))
-            else:
-                pass  # if hindi nageexist yung drive letter, proceed sa pagcheck sa next letter
-        # enter the drive kung nasaan ang .zip file na ieextract
-        loc = input("                                     Choose Drive: ")
-        loc = loc + "\\"
+        # for drive_letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+        #     if os.path.exists(f'{drive_letter}:'):
+        #         print(f'{drive_letter}:'.center(90))
+        #     else:
+        #         pass  # if hindi nageexist yung drive letter, proceed sa pagcheck sa next letter
+        # # enter the drive kung nasaan ang .zip file na ieextract
+        # loc = input("                                     Choose Drive: ")
+        # loc = loc + "\\"
 
-        # changing directory
-        os.chdir(loc)
-        cwd = os.getcwd()
+        # # changing directory
+        # os.chdir(loc)
+        # cwd = os.getcwd()
 
         # output desination
         zip_dir_path = input("                               Enter archive directory: ")
@@ -318,15 +318,16 @@ def decompression():
         loading()
 
         # search the drive
-        for root, dirs, files in os.walk(zip_dir_path):
-            if name in files:
-                fileLoc = (os.path.join(root, name))
-                print("\n" + fileLoc.center(98))
-                os.chdir(os.path.join(root))
-                with zipfile.ZipFile(name) as item:
-                    print("")
-                    print("Unzip completed!".center(98))
-                    item.extractall()
+        # for root, dirs, files in os.walk(zip_dir_path):
+            # if name in files:
+        fileLoc = (os.path.join(zip_dir_path, name))
+        print("\n" + fileLoc.center(98))
+        os.chdir(os.path.join(zip_dir_path))
+        with zipfile.ZipFile(name) as item:
+            print(fileLoc)
+            print("")
+            print("Unzip completed!".center(98))
+            item.extractall()
         more()
     except Exception:  # exception handling for decompress function
         print(" ")

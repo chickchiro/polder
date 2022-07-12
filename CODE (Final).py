@@ -188,14 +188,16 @@ def decompression():
     print("Unzipping the files...".center(98))
     loading()
 
+
     # search the drive
     for root, dirs, files in os.walk(loc):
+        print(root)
         if name in files:
             fileLoc = (os.path.join(root, name))
             print("\n" + fileLoc.center(98))
             os.chdir(os.path.join(root))
             with zipfile.ZipFile(name) as item:
-                print("")
+                print(" ")
                 print("Unzip completed!".center(98))
                 item.extractall()
     more()
